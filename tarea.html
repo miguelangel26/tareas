@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tareas</title>
+    <link rel="stylesheet" href="tarea.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container" id="container">
+        <h1>Bienvenida Dra. Mora</h1>
+        <h2>Lista de tareas</h2>
+
+        <div class="agregarTarea">
+            <input type="text" id="agregarTarea" placeholder="Nueva tarea">
+            <button onclick="Tarea()">Agregar Tarea</button>
+        </div>
+        <div class="agregarLista" id="agregarLista">
+
+        </div>
+
+        <button id="iniciarOtroDiaBtn" onclick="IniciarOtroDia()" disabled>Iniciar otro día</button>
+    </div>
+    <script src="tarea.js"></script>
+    <script>
+        // Recuperar las tareas del almacenamiento local al cargar la página
+        window.onload = function () {
+            var storedTasks = localStorage.getItem("tasks");
+            if (storedTasks) {
+                document.getElementById("agregarLista").innerHTML = storedTasks;
+                // Verificar si todas las tareas están completas
+                var todasLasTareasCompletas = verificarTodasLasTareasCompletas();
+                // Habilitar o deshabilitar el botón según el estado de las tareas
+                var iniciarOtroDiaBtn = document.getElementById("iniciarOtroDiaBtn");
+                iniciarOtroDiaBtn.disabled = !todasLasTareasCompletas;
+            }
+        };
+    </script>
+    <script>
+        // Verificar la existencia de la cookie
+        if (document.cookie.indexOf("authenticated=true") === -1) {
+          // Redirigir a index.html si no está autenticado
+          window.location.href = "index.html";
+        }
+      </script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tareas</title>
+    <link rel="stylesheet" href="tarea.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container" id="container">
+        <h1>Bienvenida Dra. Mora</h1>
+        <h2>Lista de tareas</h2>
+
+        <div class="agregarTarea">
+            <input type="text" id="agregarTarea" placeholder="Nueva tarea">
+            <button onclick="Tarea()">Agregar Tarea</button>
+        </div>
+        <div class="agregarLista" id="agregarLista">
+
+        </div>
+
+        <button id="iniciarOtroDiaBtn" onclick="IniciarOtroDia()" disabled>Iniciar otro día</button>
+    </div>
+    <script src="tarea.js"></script>
+</body>
+</html> -->
+
+
